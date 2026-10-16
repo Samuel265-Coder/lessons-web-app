@@ -1,0 +1,50 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted | ClassK</title>
+    <link rel="stylesheet" href="{% static 'lessons/css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'subject' %}" class="brand">ClassK</a>
+        <a href="{% url 'subject' %}" class="nav-link">
+            Home
+        </a>
+    </nav>
+
+    <main class="registration-section">
+        <div class="registration-card success-card">
+            <div class="success-icon">✓</div>
+
+            <p class="eyebrow">APPLICATION RECEIVED</p>
+            <h1>Thank you, {{ application.student.full_name }}!</h1>
+
+            <p class="registration-intro">
+                Your application has been submitted successfully.
+                Our team will review it.
+            </p>
+
+            <p>
+                Application reference:
+                <strong>#{{ application.pk }}</strong>
+            </p>
+
+            <p>
+                Status:
+                <strong>{{ application.get_status_display }}</strong>
+            </p>
+
+            <a href="{% url 'subject' %}" class="register-button">
+                Return to Homepage
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1068,3 +1068,169 @@ a:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+
+
+/* Student registration page */
+
+.registration-section {
+    min-height: 80vh;
+    padding: 60px 20px;
+    background: #f5f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.registration-card {
+    width: 100%;
+    max-width: 680px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(20, 43, 74, 0.08);
+}
+
+.registration-card h1 {
+    color: #142b4a;
+    margin: 8px 0 12px;
+}
+
+.registration-intro {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #142b4a;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d8dfeb;
+    border-radius: 8px;
+    font: inherit;
+    color: #142b4a;
+    background: #fff;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: 2px solid #f39a32;
+    outline-offset: 1px;
+    border-color: #f39a32;
+}
+
+.subject-checkboxes {
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.subject-checkboxes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.subject-checkboxes li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subject-checkboxes input[type="checkbox"] {
+    width: auto;
+    accent-color: #f39a32;
+}
+
+.field-help,
+.privacy-note {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.form-field ul.errorlist,
+.form-errors ul {
+    color: #b42318;
+    font-size: 0.9rem;
+    margin: 0;
+    padding-left: 18px;
+}
+
+.register-button {
+    display: inline-block;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 9px;
+    background: #f39a32;
+    color: #142b4a;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.register-button:hover {
+    background: #e88920;
+}
+
+.privacy-note {
+    text-align: center;
+    margin: 0;
+}
+
+.success-card {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #e5f4e9;
+    color: #267545;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.success-card .register-button {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .registration-section {
+        padding: 30px 14px;
+    }
+
+    .registration-card {
+        padding: 24px 18px;
+    }
+}
