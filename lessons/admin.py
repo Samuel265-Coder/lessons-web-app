@@ -1,6 +1,5 @@
-
 from django.contrib import admin
-from .models import (
+from lessons.models import (
     Subject,
     Student,
     Application,
@@ -10,29 +9,15 @@ from .models import (
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "fee",
-        "lesson_days",
-        "venue",
-        "is_available",
-    )
+    list_display = ("name", "fee", "lesson_days", "venue", "is_available",)
     list_filter = ("is_available",)
     search_fields = ("name",)
 
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = (
-        "full_name",
-        "phone_number",
-        "school_name",
-    )
-    search_fields = (
-        "full_name",
-        "phone_number",
-        "school_name",
-    )
+    list_display = ("full_name", "phone_number", "school_name",)
+    search_fields = ("full_name", "school_name",)
 
 
 class ApplicationSubjectInline(admin.TabularInline):
@@ -42,25 +27,13 @@ class ApplicationSubjectInline(admin.TabularInline):
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "student",
-        "applied_at",
-        "status",
-    )
+    list_display = ("id", "student", "applied_at", "status",)
     list_filter = ("status", "applied_at")
-    search_fields = (
-        "student__full_name",
-        "student__phone_number",
-    )
+    search_fields = ("student__full_name",)
     inlines = [ApplicationSubjectInline]
 
 
 @admin.register(ApplicationSubject)
 class ApplicationSubjectAdmin(admin.ModelAdmin):
-    list_display = (
-        "application",
-        "subject",
-        "fee_at_application",
-    )
+    list_display = ("application", "subject", "fee_at_application", )
     list_filter = ("subject",)

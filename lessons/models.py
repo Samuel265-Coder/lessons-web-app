@@ -42,8 +42,8 @@ class Application(models.Model):
 
 class ApplicationSubject(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="selected_subjects",)
-    subject = models.ForeignKey( Subject,  on_delete=models.PROTECT,related_name="application_selections", )
-    fee_at_application = models.DecimalField(max_digits=10,decimal_places=2, )
+    subject = models.ForeignKey(Subject,  on_delete=models.PROTECT,related_name="application_selections", )
+    fee_at_application = models.DecimalField(max_digits=10, decimal_places=2, )
 
     class Meta:
         constraints = [
@@ -54,7 +54,4 @@ class ApplicationSubject(models.Model):
         ]
 
     def __str__(self):
-        return (
-            f"{self.application.student.full_name} - "
-            f"{self.subject.name}"
-        )
+        return (f"{self.application.student.full_name} - {self.subject.name}")

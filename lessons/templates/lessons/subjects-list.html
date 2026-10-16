@@ -1,0 +1,344 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Discover part-time lessons with ClassK. Explore subjects, schedules, fees, and venues.">
+
+    <title>ClassK | Learn. Grow. Succeed.</title>
+
+    <link rel="stylesheet" href="{% static 'lessons/css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="navbar container">
+
+            <a href="{% url 'subject' %}" class="brand">
+                <span class="brand-icon">K</span>
+                <span>Class<span class="brand-highlight">K</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#subjects">Subjects</a>
+                <a href="#why-classk">Why ClassK?</a>
+            </div>
+
+            <a href="#subjects" class="button button-small">
+                Explore Classes
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+                    <span class="eyebrow">
+                        YOUR LEARNING JOURNEY STARTS HERE
+                    </span>
+
+                    <h1>
+                        Learn today.<br>
+                        <span class="text-orange">Lead tomorrow.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Take the next step towards your academic goals
+                        with ClassK. Discover part-time lessons, find
+                        your subjects, and prepare for a brighter future.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#subjects" class="button">
+                            Explore Subjects
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+
+                        <a href="#why-classk" class="text-link">
+                            Discover ClassK
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span class="note-dot"></span>
+                        Find lessons that fit your learning journey.
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-decoration decoration-one"></div>
+                    <div class="visual-decoration decoration-two"></div>
+
+                    <div class="learning-card">
+                        <div class="learning-card-top">
+                            <div>
+                                <span class="card-overline">
+                                    YOUR NEXT CHAPTER
+                                </span>
+                                <h2>Invest in your future.</h2>
+                            </div>
+
+                            <span class="book-icon" aria-hidden="true">
+                                &#128218;
+                            </span>
+                        </div>
+
+                        <div class="learning-illustration">
+                            <div class="illustration-circle">
+                                <span aria-hidden="true">&#127891;</span>
+                            </div>
+                        </div>
+
+                        <div class="learning-card-bottom">
+                            <span>Learn</span>
+                            <span class="mini-divider"></span>
+                            <span>Grow</span>
+                            <span class="mini-divider"></span>
+                            <span>Succeed</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-note">
+                        <span class="floating-check">&#10003;</span>
+                        <div>
+                            <strong>Your goals matter</strong>
+                            <span>One lesson at a time.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Subject catalogue -->
+        <section class="subjects-section section-padding" id="subjects">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EXPLORE YOUR OPTIONS</span>
+                        <h2>Find your next <span class="text-orange">class.</span></h2>
+                        <p>
+                            Explore available subjects, compare schedules,
+                            and find the right lessons for you.
+                        </p>
+                    </div>
+
+                    <div class="subject-count">
+                        <span class="count-number">{{ subjects|length }}</span>
+                        <span class="count-label">
+                            Available<br>subjects
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="subject-grid">
+
+                    {% for subject in subjects %}
+
+                        <article class="subject-card">
+
+                            <div class="subject-card-top">
+                                <span class="subject-label">
+                                    PART-TIME LESSONS
+                                </span>
+
+                                <span class="availability-dot"
+                                      aria-label="Available"></span>
+                            </div>
+
+                            <h3>{{ subject.name }}</h3>
+
+                            <p class="subject-description">
+                                {% if subject.description %}
+                                    {{ subject.description|truncatewords:22 }}
+                                {% else %}
+                                    Build your knowledge and work towards
+                                    your academic goals with this subject.
+                                {% endif %}
+                            </p>
+
+                            <div class="subject-details">
+
+                                <div class="detail-row">
+                                    <span class="detail-icon"
+                                          aria-hidden="true">&#128197;</span>
+                                    <div>
+                                        <span class="detail-label">Lesson days</span>
+                                        <strong>{{ subject.lesson_days }}</strong>
+                                    </div>
+                                </div>
+
+                                <div class="detail-row">
+                                    <span class="detail-icon"
+                                          aria-hidden="true">&#128336;</span>
+                                    <div>
+                                        <span class="detail-label">Class time</span>
+                                        <strong>
+                                            {{ subject.start_time|time:"g:i A" }}
+                                            &ndash;
+                                            {{ subject.end_time|time:"g:i A" }}
+                                        </strong>
+                                    </div>
+                                </div>
+
+                                <div class="detail-row">
+                                    <span class="detail-icon"
+                                          aria-hidden="true">&#128205;</span>
+                                    <div>
+                                        <span class="detail-label">Venue</span>
+                                        <strong>{{ subject.venue }}</strong>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="subject-card-footer">
+                                <div class="fee-block">
+                                    <span class="detail-label">Lesson fee</span>
+                                    <strong>
+                                        MWK {{ subject.fee|floatformat:2 }}
+                                    </strong>
+                                </div>
+
+                                <a href="#contact"
+                                   class="subject-link"
+                                   aria-label="Enquire about {{ subject.name }}">
+                                    Enquire
+                                    <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            </div>
+
+                        </article>
+
+                    {% empty %}
+
+                        <div class="empty-state">
+                            <span class="empty-icon"
+                                  aria-hidden="true">&#128218;</span>
+                            <h3>No subjects available yet</h3>
+                            <p>
+                                We're preparing our classes.
+                                Please check back soon.
+                            </p>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Benefits -->
+        <section class="benefits-section section-padding" id="why-classk">
+            <div class="container">
+
+                <div class="center-heading">
+                    <span class="eyebrow">THE CLASSK EXPERIENCE</span>
+                    <h2>A smarter way to <span class="text-orange">learn.</span></h2>
+                    <p>
+                        Everything starts with finding the right
+                        learning opportunity.
+                    </p>
+                </div>
+
+                <div class="benefits-grid">
+
+                    <article class="benefit-card">
+                        <div class="benefit-icon">&#128218;</div>
+                        <h3>Explore subjects</h3>
+                        <p>
+                            Discover available lessons and choose
+                            subjects that match your academic goals.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <div class="benefit-icon">&#128337;</div>
+                        <h3>Know your schedule</h3>
+                        <p>
+                            Check lesson days, times, and venues
+                            before making your decision.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <div class="benefit-icon">&#127919;</div>
+                        <h3>Focus on your goals</h3>
+                        <p>
+                            Take meaningful steps towards your
+                            educational ambitions, one lesson at a time.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Call to action -->
+        <section class="cta-section" id="contact">
+            <div class="container cta-content">
+
+                <div>
+                    <span class="eyebrow cta-eyebrow">
+                        YOUR FUTURE STARTS NOW
+                    </span>
+
+                    <h2>Ready to take the next step?</h2>
+
+                    <p>
+                        Explore our available subjects and find
+                        a class that works for you.
+                    </p>
+                </div>
+
+                <a href="#subjects" class="button button-light">
+                    Explore Subjects
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <a href="{% url 'subject' %}" class="brand footer-brand">
+                <span class="brand-icon">K</span>
+                <span>Class<span class="brand-highlight">K</span></span>
+            </a>
+
+            <p>Learn. Grow. Succeed.</p>
+
+            <span class="copyright">
+                &copy; {% now "Y" %} ClassK. All rights reserved.
+            </span>
+
+        </div>
+    </footer>
+
+</body>
+</html>
