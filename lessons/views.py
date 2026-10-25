@@ -21,7 +21,7 @@ def subject(request):
 
     return render(
         request,
-        "lessons/subjects-list.html",
+        "lessons/subjects.html",
         context,
     )
 
@@ -56,7 +56,7 @@ def register_student(request):
 
             return render(
                 request,
-                "lessons/registration-success.html",
+                "lessons/success.html",
                 {"application": application},
             )
 
@@ -65,7 +65,7 @@ def register_student(request):
 
     return render(
         request,
-        "lessons/registration-form.html",
+        "lessons/register.html",
         {"form": form},
     )
 

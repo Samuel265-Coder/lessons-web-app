@@ -1,47 +1,11 @@
+{% extends 'lessons/base.html' %}
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}ClassK | Learn. Grow. Succeed.{% endblock %}
 
-    <meta name="description"
-          content="Discover part-time lessons with ClassK. Explore subjects, schedules, fees, and venues.">
+{% block content %}
 
-    <title>ClassK | Learn. Grow. Succeed.</title>
-
-    <link rel="stylesheet" href="{% static 'lessons/css/style.css' %}">
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
-
-            <a href="{% url 'subject' %}" class="brand">
-                <span class="brand-icon">K</span>
-                <span>Class<span class="brand-highlight">K</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#subjects">Subjects</a>
-                <a href="#why-classk">Why ClassK?</a>
-            </div>
-
-            <a href="#subjects" class="button button-small">
-                Explore Classes
-            </a>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- Hero section -->
+<main>
+<!-- Hero section -->
         <section class="hero" id="home">
             <div class="container hero-grid">
 
@@ -320,25 +284,4 @@
         </section>
 
     </main>
-
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-
-            <a href="{% url 'subject' %}" class="brand footer-brand">
-                <span class="brand-icon">K</span>
-                <span>Class<span class="brand-highlight">K</span></span>
-            </a>
-
-            <p>Learn. Grow. Succeed.</p>
-
-            <span class="copyright">
-                &copy; {% now "Y" %} ClassK. All rights reserved.
-            </span>
-
-        </div>
-    </footer>
-
-</body>
-</html>
+{% endblock %}

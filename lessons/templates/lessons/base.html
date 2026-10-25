@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}ClassK | Learn. Grow. Succeed.{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'lessons/css/style.css' %}">
+</head>
+<body>
+
+    <!-- Common navigation -->
+    <header class="site-header">
+        <nav class="navbar container">
+
+            <a href="{% url 'subject' %}" class="brand">
+                <span class="brand-icon">K</span>
+                <span>Class<span class="brand-highlight">K</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="{% url 'subject' %}">Home</a>
+                <a href="{% url 'subject' %}#subjects">Subjects</a>
+                <a href="{% url 'subject' %}#why-classk">Why ClassK?</a>
+            </div>
+
+            <a href="{% url 'register_student' %}"
+               class="button button-small">
+                Register
+            </a>
+
+        </nav>
+    </header>
+
+    <!-- Each template inserts its content here -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Common footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a href="{% url 'subject' %}" class="brand footer-brand">
+                <span class="brand-icon">K</span>
+                <span>Class<span class="brand-highlight">K</span></span>
+            </a>
+
+            <p>Learn. Grow. Succeed.</p>
+
+            <span class="copyright">
+                &copy; {% now "Y" %} ClassK. All rights reserved.
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>

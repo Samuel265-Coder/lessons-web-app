@@ -1,0 +1,82 @@
+{% extends 'lessons/base.html' %}
+
+{% block title %}Student Registration | ClassK{% endblock %}
+
+{% block content %}
+
+<section class="registration-section">
+    <div class="registration-card">
+
+        <p class="eyebrow">JOIN CLASSK</p>
+        <h1>Student Registration</h1>
+
+        <p class="registration-intro">
+            Complete the form below and select the subjects
+            you would like to attend.
+        </p>
+
+        <form method="post" class="registration-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-field">
+                {{ form.full_name.label_tag }}
+                {{ form.full_name }}
+                {{ form.full_name.errors }}
+            </div>
+
+            <div class="form-field">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+                {{ form.phone_number.errors }}
+            </div>
+
+            <div class="form-field">
+                {{ form.school_name.label_tag }}
+                {{ form.school_name }}
+                {{ form.school_name.errors }}
+            </div>
+
+            <div class="form-field">
+                {{ form.guardian_phone.label_tag }}
+                {{ form.guardian_phone }}
+                {{ form.guardian_phone.errors }}
+            </div>
+
+            <div class="form-field">
+                <label>{{ form.subjects.label }}</label>
+                <p class="field-help">
+                    Choose one or more available subjects.
+                </p>
+
+                <div class="subject-checkboxes">
+                    {{ form.subjects }}
+                </div>
+
+                {{ form.subjects.errors }}
+            </div>
+
+            <div class="form-field">
+                {{ form.message.label_tag }}
+                {{ form.message }}
+                {{ form.message.errors }}
+            </div>
+
+            <button type="submit" class="register-button">
+                Submit Application
+            </button>
+
+            <p class="privacy-note">
+                Your application will be submitted for review.
+            </p>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'lessons/base.html' %}
+
+{% block title %}Application Submitted | ClassK{% endblock %}
+
+{% block content %}
+
+<section class="registration-section">
+    <div class="registration-card success-card">
+
+        <div class="success-icon">✓</div>
+
+        <p class="eyebrow">APPLICATION RECEIVED</p>
+
+        <h1>Thank you, {{ application.student.full_name }}!</h1>
+
+        <p class="registration-intro">
+            Your application has been submitted successfully.
+            Our team will review it.
+        </p>
+
+        <a href="{% url 'subject' %}" class="register-button">
+            Return to Homepage
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}
